@@ -68,8 +68,8 @@ Page({
   },
 
   device_manage: function(e) {
-    wx.switchTab({
-      url: '../index/index',
+    wx.navigateTo({
+      url: '../clock_set/clock_set',
     });
   },
 

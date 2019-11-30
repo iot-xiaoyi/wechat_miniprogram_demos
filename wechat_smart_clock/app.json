@@ -5,7 +5,8 @@
     "pages/clock/clock",
     "pages/logs/logs",
     "pages/find/find",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/clock_set/clock_set"
   ],
   "window": {
     "backgroundTextStyle": "light",
