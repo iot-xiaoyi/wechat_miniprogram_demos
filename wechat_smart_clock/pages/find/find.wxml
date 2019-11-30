@@ -1,0 +1,32 @@
+<view class="active_block">
+    <view class="active_item_title">
+        <view class="active_title_wrap">
+            <view class="active_title">推荐学习</view>
+        </view>
+    </view>
+    <view class="active_item">
+        <view>
+            <image bindload="cusImageLoad" src="../../image/rtt.jpg" style="width: {{imageWidth}};height: {{imageHeight}}"></image>
+        </view>
+        <view class="active_goods_name">
+            RT_Thread国产实时操作系统
+        </view>
+    </view>
+    <view class="active_item">
+        <view>
+            <image bindload="cusImageLoad" src="../../image/tecent.jpg" style="width: {{imageWidth}};height: {{imageHeight}}"></image>
+        </view>
+        <view class="active_goods_name">
+            腾讯云物联网开发平台
+        </view>
+    </view>
+  
+    <view class="active_item">
+        <view>
+            <image bindload="cusImageLoad" src="../../image/onenet.jpg" style="width: {{imageWidth}};height: {{imageHeight}}"></image>
+        </view>
+        <view class="active_goods_name">
+            中移Onenet开发平台
+        </view>
+    </view>
+</view>

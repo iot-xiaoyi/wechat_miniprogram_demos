@@ -1,0 +1,6 @@
+<view>
+      <image src="../../image/start/start_clock.png" class='welcome-img'></image>
+      <button class='welcome-btn' open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+      <!-- <button class='welcome-btn' bindtap='bindGetUserInfo'>点击开启</button> -->
+
+</view>
