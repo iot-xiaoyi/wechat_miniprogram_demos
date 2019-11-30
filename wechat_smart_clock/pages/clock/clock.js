@@ -67,16 +67,12 @@ Page({
     clearInterval(this.data.myintervalid);
   },
 
-  btn_connect_fun: function (e) {
-    console.log("ready to connect to onenet!");
-    var dat = onenet.getDeviceStatus("532808382")
-    console.log(dat)
-    if (dat)
-      console.log("connect to cloud success!");
-    else
-      console.log("connect to cloud error!");
-
+  device_manage: function(e) {
+    wx.switchTab({
+      url: '../index/index',
+    });
   },
+
   btn_red_led_fun: function (e) {
     var that = this;
     if (false == e.detail.value)

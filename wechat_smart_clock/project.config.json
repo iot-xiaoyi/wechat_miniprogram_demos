@@ -24,7 +24,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.8.2",
 	"appid": "wxdcc085c9d7f30bcd",
-	"projectname": "wechat_led",
+	"projectname": "wechat_clock",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
