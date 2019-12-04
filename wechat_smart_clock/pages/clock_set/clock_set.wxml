@@ -1,2 +1,74 @@
-<!--pages/clock_set/clock_set.wxml-->
-<text>pages/clock_set/clock_set.wxml</text>
+<view class="info_list">
+      <view class="weui_cell">
+          <view class="weui_cell_hd"><image src="../../image/shouye.png"></image></view>
+          <view class="weui_cell_bd">
+              <view class="weui_cell_bd_p"> 房间 </view>
+          </view>
+          <view class="room_name">{{ room_name }}</view>
+          <view class="weui_cell_hd-arrow" bindtap="set_room"><image src="../../image/icon-arrow.png"></image></view>
+          <view class="with_arrow"></view>
+      </view>
+</view>
+<view class="info_list">
+      <view class="weui_cell">
+          <!-- <view class="weui_cell_hd"><image src="../../image/led/led.jpg"></image></view> -->
+          <view class="weui_cell_bd">
+              <view class="weui_cell_bd_p"> 基本设置 </view>
+          </view>
+          <view class="base_set">24小时</view>
+          <view class="weui_cell_hd-arrow" bindtap="device_manage"><image src="../../image/icon-arrow.png"></image></view>
+          <view class="with_arrow"></view>
+      </view>
+</view>
+
+<view class="info_list">
+      <view class="weui_cell">
+          <!-- <view class="weui_cell_hd"><image src="../../image/led/led.jpg"></image></view> -->
+          <view class="weui_cell_bd">
+              <view class="weui_cell_bd_p"> 闹钟设置 </view>
+          </view>
+          <view class="set">关闭</view>
+          <view class="weui_cell_hd-arrow" bindtap="device_manage"><image src="../../image/icon-arrow.png"></image></view>
+          <view class="with_arrow"></view>
+      </view>
+</view>
+
+<view class="info_list">
+      <view class="weui_cell">
+          <!-- <view class="weui_cell_hd"><image src="../../image/led/led.jpg"></image></view> -->
+          <view class="weui_cell_bd">
+              <view class="weui_cell_bd_p"> 天气设置 </view>
+          </view>
+          <view class="set">北京</view>
+          <view class="weui_cell_hd-arrow" bindtap="device_manage"><image src="../../image/icon-arrow.png"></image></view>
+          <view class="with_arrow"></view>
+      </view>
+</view>
+
+<view class="info_list">
+      <view class="weui_cell">
+          <!-- <view class="weui_cell_hd"><image src="../../image/led/led.jpg"></image></view> -->
+          <view class="weui_cell_bd">
+              <view class="weui_cell_bd_p"> 删除设备 </view>
+          </view>
+          <view class="weui_cell_hd-arrow_led">
+            <switch checked="{{redSwitchChecked}}" bindchange="btn_red_led_fun"/>
+          </view>
+          <view class="with_arrow"></view>
+      </view>
+</view>
+
+<!--弹窗-->
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<view class="modal-dialog" wx:if="{{showModal}}">
+  <view class="modal-title">修改房间名</view>
+  <view class="modal-content">
+    <view class="modal-input">
+      <input placeholder-class="input-holder" type="text" maxlength="10" bindinput="inputChange" class="input" placeholder="请输入房间名"></input>
+    </view>
+  </view>
+  <view class="modal-footer">
+    <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
+    <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">确定</view>
+  </view>
+</view>

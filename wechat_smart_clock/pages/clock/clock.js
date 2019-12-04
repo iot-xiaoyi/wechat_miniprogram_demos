@@ -5,14 +5,11 @@ var app = getApp();
 
 Page({
   data: {
-    showModal: false,
     imgUrls: [
       '../../image/swiper1.jpg',
       '../../image/swiper1.jpg',
       '../../image/swiper1.jpg'
     ],
-    room_name:"",
-    input_name:"",
     id:0,
     redSwitchChecked:false,
     greenSwitchChecked:false,
@@ -31,21 +28,6 @@ Page({
     that.data.myintervalid = setInterval(function () {
       that.onShow()
     }, 3000)
-
-    //get storage data
-    var name = 'room_name_' + e.id
-    try {
-      var value = wx.getStorageSync(name)
-      if (value) {
-        // Do something with return value
-        that.setData({
-          room_name: value
-        })
-      }
-    } catch (e) {
-      // Do something when catch error
-      console.log("get stroage data error!")
-    }
   },
   onShow: function (e) {
     var that = this
@@ -68,8 +50,9 @@ Page({
   },
 
   device_manage: function(e) {
+    var that = this
     wx.navigateTo({
-      url: '../clock_set/clock_set',
+      url: '../clock_set/clock_set?id=' + that.data.id,
     });
   },
 
@@ -137,56 +120,6 @@ Page({
         switchFlag: true
       })
     }
-  },
-//显示遮罩
-
-//设置房间
-  set_room: function () {
-    this.setData({
-      showModal: true
-    })
-  },
-  inputChange:function(e) {
-    this.setData({
-      input_name: e.detail.value
-    })
-  },
-  /**
-   * 弹出框蒙层截断touchmove事件
-   */
-  preventTouchMove: function () {
-  },
-  /**
-   * 隐藏模态对话框
-   */
-  hideModal: function () {
-    this.setData({
-      showModal: false
-    });
-  },
-  /**
-   * 对话框取消按钮点击事件
-   */
-  onCancel: function () {
-    this.hideModal();
-  },
-  /**
-   * 对话框确认按钮点击事件
-   */
-  onConfirm: function () {
-    var that = this
-    that.hideModal();
-    that.setData({
-      room_name: that.data.input_name
-    })
-    var name = 'room_name_' + that.data.id
-    try {
-      wx.setStorageSync(name, that.data.input_name)
-    } catch (e) {
-      // Do something when catch error
-      console.log("setStorageSync error!")
-    }
-     console.log("success")
   },
 
   // LED控制
