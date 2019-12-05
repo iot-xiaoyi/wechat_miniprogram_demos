@@ -16,7 +16,7 @@
               <view class="weui_cell_bd_p"> 基本设置 </view>
           </view>
           <view class="base_set">24小时</view>
-          <view class="weui_cell_hd-arrow" bindtap="device_manage"><image src="../../image/icon-arrow.png"></image></view>
+          <view class="weui_cell_hd-arrow" bindtap="go_into_clock_base_set"><image src="../../image/icon-arrow.png"></image></view>
           <view class="with_arrow"></view>
       </view>
 </view>
@@ -28,7 +28,7 @@
               <view class="weui_cell_bd_p"> 闹钟设置 </view>
           </view>
           <view class="set">关闭</view>
-          <view class="weui_cell_hd-arrow" bindtap="device_manage"><image src="../../image/icon-arrow.png"></image></view>
+          <view class="weui_cell_hd-arrow" bindtap="go_into_clock_timer_set"><image src="../../image/icon-arrow.png"></image></view>
           <view class="with_arrow"></view>
       </view>
 </view>
@@ -40,7 +40,7 @@
               <view class="weui_cell_bd_p"> 天气设置 </view>
           </view>
           <view class="set">北京</view>
-          <view class="weui_cell_hd-arrow" bindtap="device_manage"><image src="../../image/icon-arrow.png"></image></view>
+          <view class="weui_cell_hd-arrow" bindtap="go_into_clock_weather_set"><image src="../../image/icon-arrow.png"></image></view>
           <view class="with_arrow"></view>
       </view>
 </view>
@@ -52,7 +52,7 @@
               <view class="weui_cell_bd_p"> 删除设备 </view>
           </view>
           <view class="weui_cell_hd-arrow_led">
-            <switch checked="{{redSwitchChecked}}" bindchange="btn_red_led_fun"/>
+            <switch checked="{{deleteDeviceFlag}}" bindchange="btn_delete_device_fun"/>
           </view>
           <view class="with_arrow"></view>
       </view>

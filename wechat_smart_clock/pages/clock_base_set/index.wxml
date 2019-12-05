@@ -1,0 +1,52 @@
+<view class="info_list">
+      <view class="weui_cell">
+          <!-- <view class="weui_cell_hd"><image src="../../image/led/led.jpg"></image></view> -->
+          <view class="weui_cell_bd">
+              <view class="weui_cell_bd_p"> 24小时制 </view>
+          </view>
+          <view class="weui_cell_hd-arrow_led">
+            <switch checked="{{hourFlag}}" bindchange="btn_hour_fun"/>
+          </view>
+          <view class="with_arrow"></view>
+      </view>
+</view>
+
+<view class="info_list">
+      <view class="weui_cell">
+          <!-- <view class="weui_cell_hd"><image src="../../image/led/led.jpg"></image></view> -->
+          <view class="weui_cell_bd">
+              <view class="weui_cell_bd_p"> 日月模式 </view>
+          </view>
+          <view class="weui_cell_hd-arrow_led">
+            <switch checked="{{sunFlag}}" bindchange="btn_sun_fun"/>
+          </view>
+          <view class="with_arrow"></view>
+      </view>
+</view>
+
+<view class="info_list">
+      <view class="weui_cell">
+          <!-- <view class="weui_cell_hd"><image src="../../image/led/led.jpg"></image></view> -->
+          <view class="weui_cell_bd">
+              <view class="weui_cell_bd_p"> 摄氏度 </view>
+          </view>
+          <view class="weui_cell_hd-arrow_temp">
+            <switch checked="{{tempFlag}}" bindchange="btn_temp_fun"/>
+          </view>
+          <view class="with_arrow"></view>
+      </view>
+</view>
+
+<view class="info_list">
+      <view class="weui_cell">
+          <!-- <view class="weui_cell_hd"><image src="../../image/led/led.jpg"></image></view> -->
+          <view class="weui_cell_bd">
+              <view class="weui_cell_bd_p"> 天气提醒 </view>
+          </view>
+          <view class="weui_cell_hd-arrow_led">
+            <switch checked="{{weatherFlag}}" bindchange="btn_temp_fun"/>
+          </view>
+          <view class="with_arrow"></view>
+      </view>
+</view>
+

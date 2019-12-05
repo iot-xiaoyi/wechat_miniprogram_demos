@@ -5,11 +5,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    id : 0,
-    room_name : "",
+    id: 0,
+    room_name: "",
     input_name: "",
     showModal: false,
     deleteDeviceFlag: 0,
+    hourFlag: 1,
+    sunFlag:1,
+    tempFlag:1,
+    weatherFlag:0,
   },
 
   /**
@@ -50,24 +54,6 @@ Page({
   onShow: function () {
 
   },
-  go_into_clock_base_set: function (e) {
-    var that = this
-    wx.navigateTo({
-      url: '../clock_base_set/index?id=' + that.data.id,
-    });
-  },
-  go_into_clock_timer_set: function (e) {
-    var that = this
-    wx.navigateTo({
-      url: '../clock_timer_set/index?id=' + that.data.id,
-    });
-  },
-  go_into_clock_weather_set: function (e) {
-    var that = this
-    wx.navigateTo({
-      url: '../clock_weather_set/index?id=' + that.data.id,
-    });
-  },
 
   // delete device
   btn_delete_device_fun: function () {
@@ -79,7 +65,7 @@ Page({
         if (res.confirm) {
           console.log('确定')
           that.setData({
-            deleteDeviceFlag:0
+            deleteDeviceFlag: 0
           })
         } else if (res.cancel) {
           console.log('取消')
