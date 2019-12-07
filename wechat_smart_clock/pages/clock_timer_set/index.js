@@ -1,4 +1,15 @@
 // pages/clock_set/clock_set.js
+const hours = []
+const minutes = []
+
+for (let i = 0; i <= 23; i++) {
+  hours.push(i)
+}
+
+for (let i = 0; i <= 59; i++) {
+  minutes.push(i)
+}
+
 Page({
 
   /**
@@ -14,6 +25,20 @@ Page({
     sunFlag: 1,
     tempFlag: 1,
     weatherFlag: 0,
+    hours:hours,
+    hour:2,
+    minutes:minutes,
+    minute:2,
+    value: [ 10, 0],
+    week_items: [
+      { name: 'monday', value: '星期一' },
+      { name: 'tuesday', value: '星期二' },
+      { name: 'wednesday', value: '星期三' },
+      { name: 'thursday', value: '星期四' },
+      { name: 'friday', value: '星期五' },
+      { name: 'saturday', value: '星期六' },
+      { name: 'sundy', value: '星期日' },
+    ]
   },
 
   /**
@@ -55,78 +80,16 @@ Page({
 
   },
 
-  // delete device
-  btn_delete_device_fun: function () {
-    var that = this
-    wx.showModal({
-      title: '警告',
-      content: '确定解绑设备吗？',
-      success: function (res) {
-        if (res.confirm) {
-          console.log('确定')
-          that.setData({
-            deleteDeviceFlag: 0
-          })
-        } else if (res.cancel) {
-          console.log('取消')
-          that.setData({
-            deleteDeviceFlag: 0
-          })
-        }
-      }
+  bindChange: function (e) {
+    const val = e.detail.value
+    this.setData({
+      hour: this.data.hours[val[0]],
+      minute: this.data.minutes[val[1]]
     })
   },
 
-  //显示遮罩
-
-  //设置房间
-  set_room: function () {
-    this.setData({
-      showModal: true
-    })
-  },
-  inputChange: function (e) {
-    this.setData({
-      input_name: e.detail.value
-    })
-  },
-  /**
-   * 弹出框蒙层截断touchmove事件
-   */
-  preventTouchMove: function () {
-  },
-  /**
-   * 隐藏模态对话框
-   */
-  hideModal: function () {
-    this.setData({
-      showModal: false
-    });
-  },
-  /**
-   * 对话框取消按钮点击事件
-   */
-  onCancel: function () {
-    this.hideModal();
-  },
-  /**
-   * 对话框确认按钮点击事件
-   */
-  onConfirm: function () {
-    var that = this
-    that.hideModal();
-    that.setData({
-      room_name: that.data.input_name
-    })
-    var name = 'room_name_' + that.data.id
-    console.log("setStorage room_name", name)
-    try {
-      wx.setStorageSync(name, that.data.input_name)
-    } catch (e) {
-      // Do something when catch error
-      console.log("setStorageSync error!")
-    }
-    console.log("success")
+  checkboxChange: function (e) {
+    console.log('checkbox发生change事件，携带value值为：', e.detail.value)
   }
 
 })

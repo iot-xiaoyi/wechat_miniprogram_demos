@@ -84,7 +84,7 @@ swiper {
   align-items: center;
   font-size: 14px;
   color: #939393;
-  margin-left: 450rpx;
+  margin-left: 485rpx;
 }
 .weui_cell_hd-arrow{
   display: inline-block;

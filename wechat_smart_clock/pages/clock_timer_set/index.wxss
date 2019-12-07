@@ -1,11 +1,5 @@
-.swiper-item{
-  display: block;
-}
-.slide-image {
-  width: 100%;
-}
-swiper {
-  width: 100%;
+.save{
+  color: red;
 }
 .category {
   padding: 15px 0 10px 0;
@@ -63,6 +57,15 @@ swiper {
     align-items: center;
     border-bottom: 2rpx solid #dadada;
 }
+.weui_cell_top{
+    position: relative;
+    display: flex;
+    padding: 5rpx;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-top: 2rpx solid #dadada;
+}
 .weui_cell_hd{
   display: inline-block;
   width: 40rpx;
@@ -116,7 +119,7 @@ swiper {
   height: 40rpx; */
   vertical-align: -5rpx;
     /* align-items: center; */
-    margin-left: 430rpx;
+    margin-left: 465rpx;
 }
 .weui_cell_hd-arrow_temp {
   display: inline-block;
@@ -180,59 +183,35 @@ swiper {
   border-radius: 36rpx;
 }
 
-.modal-title {
-  padding-top: 50rpx;
-  font-size: 36rpx;
-  color: #030303;
-  text-align: center;
+.week_checkbox{
+  flex-direction: column;
+  align-items: center;
 }
-
-.modal-content {
-  padding: 50rpx 32rpx;
-}
-
-.modal-input {
-  display: flex;
-  background: #fff;
-  border: 2rpx solid #ddd;
-  border-radius: 4rpx;
-  font-size: 28rpx;
-}
-
-
-.input {
-  width: 100%;
-  height: 82rpx;
-  font-size: 28rpx;
-  line-height: 28rpx;
-  padding: 0 20rpx;
-  box-sizing: border-box;
-  color: #333;
-}
-
-input-holder {
-  color: #666;
-  font-size: 28rpx;
-}
-
-.modal-footer {
+.box_normal{
   display: flex;
   flex-direction: row;
-  height: 86rpx;
-  border-top: 1px solid #dedede;
-  font-size: 34rpx;
-  line-height: 86rpx;
+  justify-content: space-between;
+  padding: 25rpx;
+  border-bottom: 2rpx solid #dadada;
 }
-
-.btn-cancel {
-  width: 50%;
-  color: #666;
-  text-align: center;
-  border-right: 1px solid #dedede;
+.box_normal_top{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 25rpx;
+  border-top: 2rpx solid #dadada;
 }
-
-.btn-confirm {
-  width: 50%;
-  color: #69c3aa;
-  text-align: center;
+.box_normal_name{
+  margin-right: 30rpx;
+}
+.box{
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+}
+.box_value{
+  margin-left: 20rpx;
+}
+.box_name{
+  margin-right: 40rpx;
 }
