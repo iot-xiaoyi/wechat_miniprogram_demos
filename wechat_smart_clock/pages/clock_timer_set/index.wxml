@@ -11,7 +11,7 @@
 </view>
 
   <view>
-  <picker-view indicator-style="height: 80rpx;" style="width: 100%; height: 300rpx;" value="{{value}}" bindchange="bindChange">
+  <picker-view indicator-style="height: 80rpx;" class="pick" value="{{value}}" bindchange="bindChange">
     <picker-view-column>
       <view wx:for="{{hours}}" style="line-height: 80rpx">{{item}}时</view>
     </picker-view-column>

@@ -183,6 +183,11 @@
   border-radius: 36rpx;
 }
 
+.pick{
+  width: 350rpx; 
+  height: 300rpx;
+  margin-left: 200rpx;
+}
 .week_checkbox{
   flex-direction: column;
   align-items: center;
@@ -211,6 +216,8 @@
 }
 .box_value{
   margin-left: 20rpx;
+  font-size: 13px;
+  color: #737373;
 }
 .box_name{
   margin-right: 40rpx;
