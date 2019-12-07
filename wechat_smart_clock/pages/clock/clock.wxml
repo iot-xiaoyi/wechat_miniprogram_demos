@@ -1,18 +1,18 @@
-<view class="info_list">
+<view>
       <view class="weui_cell">
-          <view class="weui_cell_hd"><image src="../../image/led/led.jpg"></image></view>
+          <view class="weui_cell_hd"><image src="../../image/clock/clock_blue.png"></image></view>
           <view class="weui_cell_bd">
               <view class="weui_cell_bd_p"> 设备 </view>
           </view>
-          <view class="room_name">管理</view>
+          <view class="room_name">设置</view>
           <view class="weui_cell_hd-arrow" bindtap="device_manage"><image src="../../image/icon-arrow.png"></image></view>
           <view class="with_arrow"></view>
       </view>
 </view>
 
-<view class="led_info_list">
+<view>
       <view class="weui_cell">
-          <view class="weui_cell_hd"><image src="../../image/led/led.jpg"></image></view>
+          <view class="weui_cell_hd"><image src="../../image/clock/clock_blue.png"></image></view>
           <view class="weui_cell_bd">
               <view class="weui_cell_bd_p"> 温度 </view>
           </view>
@@ -21,9 +21,9 @@
       </view>
 </view>
 
-<view class="led_info_list">
+<view>
       <view class="weui_cell">
-          <view class="weui_cell_hd"><image src="../../image/led/led.jpg"></image></view>
+          <view class="weui_cell_hd"><image src="../../image/clock/clock_blue.png"></image></view>
           <view class="weui_cell_bd">
               <view class="weui_cell_bd_p"> 湿度 </view>
           </view>
@@ -32,18 +32,37 @@
       </view>
 </view>
 
-<!-- 最多支持五组闹钟 -->
-<view class="led_info_list">
-      <view class="weui_cell">
-          <view class="weui_cell_hd"><image src="../../image/led/led.jpg"></image></view>
-          <view class="weui_cell_bd">
-              <view class="weui_cell_bd_p"> 闹钟 </view>
-          </view>
-          <!-- <view class="room_name">{{ room_name }}</view> -->
-          <view class="weui_cell_hd-arrow_led">
-            <switch checked="{{redSwitchChecked}}" bindchange="btn_red_led_fun"/>
-          </view>
-          <view class="with_arrow"></view>
-      </view>
+<!-- 最多支持二组闹钟 -->
+<view class="null"></view>
+
+<view>
+  <view class="my_clock_cell">
+    <view class="my_clock">我的闹钟</view>
+    <image class="clock_add_icon" src="../../image/clock/add.png" bindtap="go_into_clock_timer_set"></image>
+    <view class="with_arrow"></view>
+  </view>
 </view>
 
+<view wx:for="{{items}}" wx:key="{{index}}">
+  <movable-area class='movable-area'>
+    <movable-view direction="horizontal" class='movable-view'>
+      <view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove">
+        <view class="content">
+          <view class="content_left" bindtap='goDetail'>
+            <view class="content_time">
+              <text>9:30</text>
+            </view>
+            <view class="content_week">
+                <text>闹钟，周一 周二 周三 周四 周五 周六</text>
+            </view>
+          </view>
+          <view class="content_right">
+            <switch class="content_power"></switch>
+          </view>
+        </view>
+
+        <view class="del" catchtap="del" data-index="{{index}}">删除</view>
+      </view>
+    </movable-view>
+  </movable-area>
+</view>

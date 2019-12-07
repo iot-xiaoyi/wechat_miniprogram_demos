@@ -1,4 +1,4 @@
-<view class="info_list">
+<view>
       <view class="weui_cell">
           <view class="weui_cell_hd"><image src="../../image/shouye.png"></image></view>
           <view class="weui_cell_bd">
@@ -9,7 +9,7 @@
           <view class="with_arrow"></view>
       </view>
 </view>
-<view class="info_list">
+<view>
       <view class="weui_cell">
           <!-- <view class="weui_cell_hd"><image src="../../image/led/led.jpg"></image></view> -->
           <view class="weui_cell_bd">
@@ -21,19 +21,7 @@
       </view>
 </view>
 
-<view class="info_list">
-      <view class="weui_cell">
-          <!-- <view class="weui_cell_hd"><image src="../../image/led/led.jpg"></image></view> -->
-          <view class="weui_cell_bd">
-              <view class="weui_cell_bd_p"> 闹钟设置 </view>
-          </view>
-          <view class="set">关闭</view>
-          <view class="weui_cell_hd-arrow" bindtap="go_into_clock_timer_set"><image src="../../image/icon-arrow.png"></image></view>
-          <view class="with_arrow"></view>
-      </view>
-</view>
-
-<view class="info_list">
+<view>
       <view class="weui_cell">
           <!-- <view class="weui_cell_hd"><image src="../../image/led/led.jpg"></image></view> -->
           <view class="weui_cell_bd">
@@ -45,7 +33,7 @@
       </view>
 </view>
 
-<view class="info_list">
+<view>
       <view class="weui_cell">
           <!-- <view class="weui_cell_hd"><image src="../../image/led/led.jpg"></image></view> -->
           <view class="weui_cell_bd">

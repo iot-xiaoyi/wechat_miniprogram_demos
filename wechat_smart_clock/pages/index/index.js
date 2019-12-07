@@ -17,7 +17,7 @@ Page({
     room_names: ["客厅","卧室"],
     devices: [],
     employId: '',
-    bindDisabled:false
+    bindDisabled:false,
   },
 
   onLoad: function (e){
@@ -80,4 +80,6 @@ Page({
 
   },
   
+
+
 })

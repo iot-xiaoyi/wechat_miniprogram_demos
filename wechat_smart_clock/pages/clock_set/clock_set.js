@@ -56,12 +56,6 @@ Page({
       url: '../clock_base_set/index?id=' + that.data.id,
     });
   },
-  go_into_clock_timer_set: function (e) {
-    var that = this
-    wx.navigateTo({
-      url: '../clock_timer_set/index?id=' + that.data.id,
-    });
-  },
   go_into_clock_weather_set: function (e) {
     var that = this
     wx.navigateTo({

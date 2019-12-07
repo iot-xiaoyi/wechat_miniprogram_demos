@@ -1,2 +1,17 @@
-<!--pages/clock_timer_set/index.wxml-->
-<text>pages/clock_timer_set/index.wxml</text>
+<view class="info_list">
+      <view class="weui_cell">
+          <!-- <view class="weui_cell_hd"><image src="../../image/led/led.jpg"></image></view> -->
+          <view class="weui_cell_bd">
+              <view class="weui_cell_bd_p"> 24小时制 </view>
+          </view>
+          <view class="weui_cell_hd-arrow_led">
+            <switch checked="{{hourFlag}}" bindchange="btn_hour_fun"/>
+          </view>
+          <view class="with_arrow"></view>
+      </view>
+</view>
+
+  <movable-area style="height: 200px; width: 200px; background: red;">
+    <movable-view style="height: 50px; width: 50px; background: blue;" x="{{x}}" y="{{y}}" direction="all">
+    </movable-view>
+  </movable-area>
