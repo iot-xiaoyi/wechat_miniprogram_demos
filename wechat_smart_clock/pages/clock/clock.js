@@ -1,6 +1,6 @@
 var WxAutoImage = require('../../js/wxAutoImageCal.js');
 var onenet = require('../../js/onenet.js');
-var API_KEY = "eCQJZEKoyVqA5qV4ef3qTH2OZzo="
+
 var app = getApp();
 
 Page({
@@ -18,6 +18,7 @@ Page({
     myintervalid:0,
     /*  clock */
     items: [],
+    data_ctx: {temp: 25, temp_mode: 1 },
     startX: 0, //开始坐标
     startY: 0
   },
@@ -29,21 +30,23 @@ Page({
       id:e.id
     })
     that.getDataPoints(e.id)
-    that.data.myintervalid = setInterval(function () {
-      that.onShow()
-    }, 3000)
+    // that.data.myintervalid = setInterval(function () {
+    //   that.onShow()
+    // }, 3000)
 
 // ################################## 闹钟 #################################
-    for (var i = 0; i < 2; i++) {
-      this.data.items.push({
-        content: i + " 向左滑动删除哦,向左滑动删除哦,向左滑动删除哦,向左滑动删除哦,向左滑动删除哦",
-        isTouchMove: false //默认全隐藏删除
-      })
-    }
+    this.data.items.push({
+      time: that.data.data_ctx.timer_set[0].time,
+      week: that.data.data_ctx.timer_set[0].week,
+      enable:that.data.data_ctx.timer_set[0].enable,
+      isTouchMove: false //默认全隐藏删除
+    })
+
     this.setData({
       items: this.data.items
     })
   },
+
   onShow: function (e) {
     var that = this
     // var dat = onenet.getDeviceStatus(e.id);
@@ -54,6 +57,7 @@ Page({
 
     that.getDataPoints(that.data.id)
   },
+
   onHide: function () {
     // 页面隐藏
     clearInterval(this.data.myintervalid);
@@ -70,76 +74,12 @@ Page({
       url: '../clock_set/clock_set?id=' + that.data.id,
     });
   },
+
   go_into_clock_timer_set: function (e) {
     var that = this
     wx.navigateTo({
       url: '../clock_timer_set/index?id=' + that.data.id,
     });
-  },
-  btn_red_led_fun: function (e) {
-    var that = this;
-    if (false == e.detail.value)
-    {
-      console.log("ready to open red led!");
-      onenet.sendCmd(that.data.id, "0")
-      that.setData({
-        redSwitchChecked: false,
-        greenSwitchChecked: false,
-        blueSwitchChecked: false
-      })
-    }else
-    {
-      console.log("ready to close red led!");
-      onenet.sendCmd(that.data.id, "2")
-      that.setData({
-        redSwitchChecked: true,
-        greenSwitchChecked: false,
-        blueSwitchChecked: false,
-        switchFlag:true
-      })
-    }
-  },
-  btn_green_led_fun: function (e) {
-    var that = this;
-    if (false == e.detail.value) {
-      console.log("ready to open blue led!");
-      onenet.sendCmd(that.data.id, "0")
-      that.setData({
-        redSwitchChecked: false,
-        greenSwitchChecked: false,
-        blueSwitchChecked: false
-      })
-    } else {
-      console.log("ready to close blue led!");
-      onenet.sendCmd(that.data.id, "3")
-      that.setData({
-        redSwitchChecked: false,
-        greenSwitchChecked: true,
-        blueSwitchChecked: false,
-        switchFlag: true
-      })
-    }
-  },
-  btn_blue_led_fun: function (e) {
-    var that = this;
-    if (false == e.detail.value) {
-      console.log("ready to open blue led!");
-      onenet.sendCmd(that.data.id, "0")
-      that.setData({
-        redSwitchChecked: false,
-        greenSwitchChecked: false,
-        blueSwitchChecked: false
-      })
-    } else {
-      console.log("ready to close blue led!");
-      onenet.sendCmd(that.data.id, "4")
-      that.setData({
-        redSwitchChecked: false,
-        greenSwitchChecked: false,
-        blueSwitchChecked: true,
-        switchFlag: true
-      })
-    }
   },
 
   // LED控制
@@ -154,7 +94,7 @@ Page({
     var color_value = 0
     //查看设备连接状态，并刷新按钮状态
     wx.request({
-      url: "http://api.heclouds.com/devices/" + id + "/datapoints?datastream_id=color",
+      url: "http://api.heclouds.com/devices/" + id + "/datastreams?datastream_ids=temp,temp_mode,humi,timer_set,time_mode,time_show_mode,voice",
       header: {
         'content-type': 'application/x-www-form-urlencoded',
         "api-key": app.globalData.api_key
@@ -166,47 +106,20 @@ Page({
         console.log(res)
         deviceConnected = true
 
-        if (that.data.switchFlag != true)
-        {
-          color_value = res.data.data.datastreams[0].datapoints[0].value
-          switch (parseInt(color_value)) {
-            case 1:
-              that.setData({
-                redSwitchChecked: false,
-                greenSwitchChecked: false,
-                blueSwitchChecked: false
-              })
-              break;
-            case 2:
-              that.setData({
-                redSwitchChecked: true,
-                greenSwitchChecked: false,
-                blueSwitchChecked: false
-              })
-              break;
-            case 3:
-              that.setData({
-                redSwitchChecked: false,
-                greenSwitchChecked: true,
-                blueSwitchChecked: false
-              })
-              break;
-            case 4:
-              that.setData({
-                redSwitchChecked: false,
-                greenSwitchChecked: false,
-                blueSwitchChecked: true
-              })
-              console.log("color_value is ", color_value)
-              console.log("blueSwitchChecked is ", that.data.blueSwitchChecked)
-              break;
-          }
-          console.log("color_value is ", color_value)
-        }else{
-          that.setData({
-            switchFlag:false
-          })
-        }
+        that.data.data_ctx.temp = res.data.data[0].current_value
+        that.data.data_ctx.temp_mode = res.data.data[1].current_value
+        that.data.data_ctx.humi = res.data.data[2].current_value
+        that.data.data_ctx.timer_set = res.data.data[3].current_value
+        that.data.data_ctx.time_mode = res.data.data[4].current_value
+        that.data.data_ctx.time_show_mode = res.data.data[5].current_value
+        that.data.data_ctx.voice = res.data.data[6].current_value
+
+        that.setData({
+          data_ctx:that.data.data_ctx
+        })
+        console.log(that.data.data_ctx.temp, that.data.data_ctx.humi, that.data.data_ctx.temp_mode, that.data.data_ctx.time_mode, that.data.data_ctx.time_show_mode, "voice is", that.data.data_ctx.voice )
+        console.log("timer_set is", that.data.data_ctx.timer_set)
+
       },
       fail(res) {
         console.log("请求失败")

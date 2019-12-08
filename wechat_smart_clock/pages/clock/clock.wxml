@@ -16,7 +16,7 @@
           <view class="weui_cell_bd">
               <view class="weui_cell_bd_p"> 温度 </view>
           </view>
-          <view class="room_name">26°C</view>
+          <view class="room_name">{{data_ctx.temp}}°C</view>
           <view class="with_arrow"></view>
       </view>
 </view>
@@ -27,7 +27,7 @@
           <view class="weui_cell_bd">
               <view class="weui_cell_bd_p"> 湿度 </view>
           </view>
-          <view class="room_name">50%</view>
+          <view class="room_name">{{data_ctx.humi}}%</view>
           <view class="with_arrow"></view>
       </view>
 </view>
