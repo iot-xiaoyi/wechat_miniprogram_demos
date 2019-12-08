@@ -17,7 +17,7 @@ Page({
     switchFlag:false,
     myintervalid:0,
     /*  clock */
-    items: [{ enable: 1, time: "09:10", week: "1 2 3 4 5",isTouchMove:false},{enable:1, time:"10:00",week:"1",isTouchMove:false}],
+    items: [{ }],
     data_ctx: {temp: 25, temp_mode: 1 },
     startX: 0, //开始坐标
     startY: 0
@@ -98,15 +98,17 @@ Page({
         that.data.data_ctx.time_show_mode = res.data.data[5].current_value
         that.data.data_ctx.voice = res.data.data[6].current_value
 
-        that.data.items[0].time = that.data.data_ctx.timer_set[0].time
-        that.data.items[0].week = that.data.data_ctx.timer_set[0].week
-        that.data.items[0].enable = that.data.data_ctx.timer_set[0].enable
-        that.data.items[0].isTouchMove = false
+        var length = Object.keys(that.data.data_ctx.timer_set).length;
+        console.log("timer_set is", that.data.data_ctx.timer_set, "len is ", length )
 
-        that.data.items[1].time = that.data.data_ctx.timer_set[1].time
-        that.data.items[1].week = that.data.data_ctx.timer_set[1].week
-        that.data.items[1].enable = that.data.data_ctx.timer_set[1].enable
-        that.data.items[1].isTouchMove = false
+        for (var i=0; i<length; i++)
+        {
+          that.data.items[i].time = that.data.data_ctx.timer_set[0].time
+          that.data.items[i].week = that.data.data_ctx.timer_set[0].week
+          that.data.items[i].enable = that.data.data_ctx.timer_set[0].enable
+          that.data.items[i].isTouchMove = false
+
+        }
 
         // that.data.items.push({
         //   time: that.data.data_ctx.timer_set[1].time,
