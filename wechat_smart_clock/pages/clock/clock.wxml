@@ -50,10 +50,10 @@
         <view class="content">
           <view class="content_left" bindtap='goDetail'>
             <view class="content_time">
-              <text>9:30</text>
+              <text> {{item.time}}</text>
             </view>
             <view class="content_week">
-                <text>闹钟，周一 周二 周三 周四 周五 周六</text>
+                <text>闹钟, {{item.week}}</text>
             </view>
           </view>
           <view class="content_right">

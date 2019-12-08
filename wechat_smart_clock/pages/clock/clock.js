@@ -17,7 +17,7 @@ Page({
     switchFlag:false,
     myintervalid:0,
     /*  clock */
-    items: [],
+    items: [{ enable: 1, time: "09:10", week: "1 2 3 4 5",isTouchMove:false},{enable:1, time:"10:00",week:"1",isTouchMove:false}],
     data_ctx: {temp: 25, temp_mode: 1 },
     startX: 0, //开始坐标
     startY: 0
@@ -34,17 +34,6 @@ Page({
     //   that.onShow()
     // }, 3000)
 
-// ################################## 闹钟 #################################
-    this.data.items.push({
-      time: that.data.data_ctx.timer_set[0].time,
-      week: that.data.data_ctx.timer_set[0].week,
-      enable:that.data.data_ctx.timer_set[0].enable,
-      isTouchMove: false //默认全隐藏删除
-    })
-
-    this.setData({
-      items: this.data.items
-    })
   },
 
   onShow: function (e) {
@@ -114,8 +103,26 @@ Page({
         that.data.data_ctx.time_show_mode = res.data.data[5].current_value
         that.data.data_ctx.voice = res.data.data[6].current_value
 
+        that.data.items[0].time = that.data.data_ctx.timer_set[0].time
+        that.data.items[0].week = that.data.data_ctx.timer_set[0].week
+        that.data.items[0].enable = that.data.data_ctx.timer_set[0].enable
+        that.data.items[0].isTouchMove = false
+
+        that.data.items[1].time = that.data.data_ctx.timer_set[1].time
+        that.data.items[1].week = that.data.data_ctx.timer_set[1].week
+        that.data.items[1].enable = that.data.data_ctx.timer_set[1].enable
+        that.data.items[1].isTouchMove = false
+
+        // that.data.items.push({
+        //   time: that.data.data_ctx.timer_set[1].time,
+        //   week: that.data.data_ctx.timer_set[1].week,
+        //   enable: that.data.data_ctx.timer_set[1].enable,
+        //   isTouchMove: false //默认全隐藏删除
+        // })
+
         that.setData({
-          data_ctx:that.data.data_ctx
+          data_ctx:that.data.data_ctx,
+          items:that.data.items
         })
         console.log(that.data.data_ctx.temp, that.data.data_ctx.humi, that.data.data_ctx.temp_mode, that.data.data_ctx.time_mode, that.data.data_ctx.time_show_mode, "voice is", that.data.data_ctx.voice )
         console.log("timer_set is", that.data.data_ctx.timer_set)
