@@ -157,7 +157,7 @@ Page({
       url: "http://api.heclouds.com/devices/" + id + "/datapoints?datastream_id=color",
       header: {
         'content-type': 'application/x-www-form-urlencoded',
-        "api-key": API_KEY
+        "api-key": app.globalData.api_key
       },
       data: {
 

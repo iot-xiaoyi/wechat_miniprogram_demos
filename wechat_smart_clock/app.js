@@ -1,6 +1,6 @@
 //app.js
 var onenet = require('js/onenet.js');
-
+var API_KEY = "=hzfzbfozMkjRQvH3kdEzHtO208="
 App({
   onLaunch: function () {
     // 展示本地存储能力
@@ -13,8 +13,8 @@ App({
     wx.request({
       url: "https://api.heclouds.com/devices",
       header: {
-        "api-key": "eCQJZEKoyVqA5qV4ef3qTH2OZzo="
-      },
+        "api-key": API_KEY
+      }, 
       data: {
 
       },
@@ -39,5 +39,6 @@ App({
   globalData: {
     userInfo: null,
     devices: [],
+    api_key:API_KEY,
   }
 })
