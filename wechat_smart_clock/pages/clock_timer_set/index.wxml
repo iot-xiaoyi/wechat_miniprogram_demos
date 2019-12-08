@@ -5,7 +5,7 @@
     </view>
     <view class="box_normal_name">
       <!-- <switch checked="{{hourFlag}}" bindchange="btn_hour_fun"/> -->
-      <text class="save">保存</text>
+      <text class="save" bindtap="save_fun">保存</text>
     </view>
     <view class="with_arrow"></view>
 </view>
@@ -28,7 +28,7 @@
         <view class="weui_cell_bd_p"> 重复 </view>
     </view>
     <view class="box_normal_name">
-      <text>永不</text>
+      <text>{{repeat}}</text>
     </view>
     <view class="with_arrow"></view>
 </view>

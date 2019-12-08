@@ -197,7 +197,10 @@ Page({
   },
   //跳转
   goDetail() {
-    console.log('点击元素跳转')
+    var that = this
+    wx.navigateTo({
+      url: '../clock_timer_set/index?id=' + that.data.id,
+    });
   }
 
 })
