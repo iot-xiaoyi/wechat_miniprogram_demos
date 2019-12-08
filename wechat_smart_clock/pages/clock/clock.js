@@ -71,11 +71,6 @@ Page({
     });
   },
 
-  // LED控制
-  switchChange: function (e) {
-    console.log(e.detail.value)
-  },
-
   //onenet interfce
   getDataPoints: function (id) {
     var that = this
@@ -188,10 +183,15 @@ Page({
   },
   //删除事件
   del: function (e) {
-    this.data.items.splice(e.currentTarget.dataset.index, 1)
-    this.setData({
-      items: this.data.items
+    var that = this
+    console.log("delete", e)
+    that.data.items.splice(e.currentTarget.dataset.index, 1)
+    that.setData({
+      items: that.data.items
     })
+    //发送删除一个闹钟的命令
+    var cmd = "{\"name\":\"timer_del\",\"value\":0}"
+    onenet.sendCmd(that.data.id, cmd)
   },
   //跳转
   goDetail() {

@@ -1,5 +1,5 @@
 
-var API_KEY = "eCQJZEKoyVqA5qV4ef3qTH2OZzo="
+var API_KEY = "=hzfzbfozMkjRQvH3kdEzHtO208="
 
 function getDeviceStatus(device_id) {
   var deviceConnected
