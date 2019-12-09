@@ -44,25 +44,28 @@
 </view>
 
 <view wx:for="{{items}}" wx:key="{{index}}">
-  <movable-area class='movable-area'>
-    <movable-view direction="horizontal" class='movable-view'>
-      <view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove">
-        <view class="content">
-          <view class="content_left" bindtap='goDetail'>
-            <view class="content_time">
-              <text> {{item.time}}</text>
+  <view wx:if="{{item.valid==1}}">
+    <movable-area class='movable-area'>
+      <movable-view direction="horizontal" class='movable-view'>
+        <view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove">
+          <view class="content">
+            <view class="content_left" bindtap='goDetail' data-id="{{index}}">
+              <view class="content_time">
+                <text> {{item.time}}</text>
+              </view>
+              <view class="content_week">
+                  <text>闹钟, {{item.week}}</text>
+              </view>
             </view>
-            <view class="content_week">
-                <text>闹钟, {{item.week}}</text>
+            <view class="content_right">
+              <switch class="content_power" checked="{{item.enable}}" bindchange="clock_power_fun"></switch>
             </view>
           </view>
-          <view class="content_right">
-            <switch class="content_power"></switch>
-          </view>
-        </view>
 
-        <view class="del" catchtap="del" data-index="{{index}}">删除</view>
-      </view>
-    </movable-view>
-  </movable-area>
+          <view class="del" bindtap="del" data-id="{{index}}" >删除</view>
+        </view> 
+      </movable-view>
+    </movable-area>
+  </view>
+
 </view>

@@ -17,7 +17,7 @@ Page({
     switchFlag:false,
     myintervalid:0,
     /*  clock */
-    items: [{ }],
+    items: [{id:0, time: "09:10", week: "1 2 3", enable: 0, repeat: 0, valid: 0 }, {id:1, time: "07:10", week: "3", enable: 0, repeat: 0, valid: 0 }],
     data_ctx: {temp: 25, temp_mode: 1 },
     startX: 0, //开始坐标
     startY: 0
@@ -66,9 +66,33 @@ Page({
 
   go_into_clock_timer_set: function (e) {
     var that = this
+    var index = 0;
+    if (1==that.data.items[1].valid)
+    {
+      wx.showModal({
+        title: '警告',
+        content: '仅支持两组定时器',
+        success: function (res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+          }
+        }
+      })
+      return 
+    }else if(1==that.data.items[0].valid)
+    {
+      index = 1;
+    }else
+    {
+      index = 0;
+    }
     wx.navigateTo({
-      url: '../clock_timer_set/index?id=' + that.data.id,
+      url: '../clock_timer_set/index?id=' + that.data.id + "&index=" + index,
     });
+  },
+
+  clock_power_fun: function (id){
+
   },
 
   //onenet interfce
@@ -103,9 +127,11 @@ Page({
 
         for (var i=0; i<length; i++)
         {
-          that.data.items[i].time = that.data.data_ctx.timer_set[0].time
-          that.data.items[i].week = that.data.data_ctx.timer_set[0].week
-          that.data.items[i].enable = that.data.data_ctx.timer_set[0].enable
+          that.data.items[i].id = that.data.data_ctx.timer_set[i]
+          that.data.items[i].time = that.data.data_ctx.timer_set[i].time
+          that.data.items[i].week = that.data.data_ctx.timer_set[i].week
+          that.data.items[i].enable = that.data.data_ctx.timer_set[i].enable
+          that.data.items[i].valid = 1
           that.data.items[i].isTouchMove = false
 
         }
@@ -186,20 +212,22 @@ Page({
   //删除事件
   del: function (e) {
     var that = this
-    console.log("delete", e)
-    that.data.items.splice(e.currentTarget.dataset.index, 1)
+    console.log("delete", e.currentTarget.dataset.id)
+    var id = e.currentTarget.dataset.id
+    that.data.items[id].valid = 0
     that.setData({
       items: that.data.items
     })
     //发送删除一个闹钟的命令
-    var cmd = "{\"name\":\"timer_del\",\"value\":0}"
+    var cmd = "{\"name\":\"timer_del\",\"value\":" + id + "}"
     onenet.sendCmd(that.data.id, cmd)
   },
   //跳转
-  goDetail() {
+  goDetail:function(e) {
     var that = this
+    var index = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '../clock_timer_set/index?id=' + that.data.id,
+      url: '../clock_timer_set/index?id=' + that.data.id + "&index=" + index,
     });
   }
 

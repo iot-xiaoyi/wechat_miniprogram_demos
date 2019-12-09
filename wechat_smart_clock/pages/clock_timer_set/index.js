@@ -19,6 +19,7 @@ Page({
    */
   data: {
     id: 0,
+    index:0,
     room_name: "",
     input_name: "",
     showModal: false,
@@ -54,7 +55,8 @@ Page({
     var name = 'room_name_' + options.id
     console.log(name)
     that.setData({
-      id: options.id
+      id: options.id,
+      index:options.index
     })
     try {
       var value = wx.getStorageSync(name)
@@ -123,7 +125,7 @@ Page({
         week = week + "7 "
       }
     }
-    var timer_new_data = "{\"name\":\"timer_set\",\"value\":{\"id\":" + that.data.id + ",\"enable\":1,\"time\":\"" + that.data.hour + ":" + that.data.minute + "\",\"repeat\":" + repeat + ",\"week\":" + "\"" + week + "\"}}"
+    var timer_new_data = "{\"name\":\"timer_set\",\"value\":{\"id\":" + that.data.index + ",\"enable\":1,\"time\":\"" + that.data.hour + ":" + that.data.minute + "\",\"repeat\":" + repeat + ",\"week\":" + "\"" + week + "\"}}"
     onenet.sendCmd(that.data.id, timer_new_data)
     wx.showToast({
       title: '保存成功',
